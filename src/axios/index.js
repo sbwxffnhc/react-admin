@@ -30,3 +30,12 @@ export const gitOauthInfo = access_token => get({ url: `${config.GIT_USER}access
 export const admin = () => get({ url: config.MOCK_AUTH_ADMIN });
 // 访问权限获取
 export const guest = () => get({ url: config.MOCK_AUTH_VISITOR });
+
+export const post_test = () => post({ 
+    url: `cgi-bin/cgi_vista.cgi`,
+    data: {
+        action: 'test',
+    } 
+});
+
+

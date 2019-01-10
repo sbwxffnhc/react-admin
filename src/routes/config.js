@@ -1,5 +1,7 @@
 export default {
     menus: [ // 菜单相关路由
+        { key: '/main/index', title: '首页', icon: 'mobile', component: 'Test' },
+        /*
         { key: '/app/dashboard/index', title: '首页', icon: 'mobile', component: 'Dashboard' },
         {
             key: '/app/ui', title: 'UI', icon: 'scan',
@@ -61,11 +63,11 @@ export default {
         },
         {
             key: '/app/cssModule', title: 'cssModule', icon: 'star', component: 'Cssmodule'
-        },
+        },*/
         {
-            key: '/app/extension', title: '功能扩展', icon: 'bars',
+            key: '/main/extension', title: '功能扩展', icon: 'bars',
             subs: [
-                { key: '/app/extension/queryParams', title: '问号形式参数', component: 'QueryParams', query: '?param1=1&param2=2' },
+                { key: '/main/extension/queryParams', title: '问号形式参数', component: 'QueryParams', query: '?param1=1&param2=2' },
             ],
         },
     ],
