@@ -8,6 +8,8 @@ import { bindActionCreators } from 'redux';
 import { fetchData, receiveData } from '@/action';
 import { PwaInstaller } from '../widget';
 
+
+
 const FormItem = Form.Item;
 
 class Login extends React.Component {
@@ -16,6 +18,7 @@ class Login extends React.Component {
         receiveData(null, 'auth');
     }
     componentDidUpdate(prevProps) { // React 16.3+弃用componentWillReceiveProps
+        console.log('props',this.props)
         const { auth: nextAuth = {}, history } = this.props;
         // const { history } = this.props;
         if (nextAuth.data && nextAuth.data.uid) { // 判断是否登陆
@@ -34,16 +37,13 @@ class Login extends React.Component {
             }
         });
     };
-    gitHub = () => {
-        window.location.href = 'https://github.com/login/oauth/authorize?client_id=792cdcd244e98dcd2dee&redirect_uri=http://localhost:3006/&scope=user&state=reactAdmin';
-    };
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
             <div className="login">
                 <div className="login-form" >
                     <div className="login-logo">
-                        <span>React Admin</span>
+                        <span>路由器登陆</span>
                         <PwaInstaller />
                     </div>
                     <Form onSubmit={this.handleSubmit} style={{maxWidth: '300px'}}>
@@ -62,20 +62,9 @@ class Login extends React.Component {
                             )}
                         </FormItem>
                         <FormItem>
-                            {getFieldDecorator('remember', {
-                                valuePropName: 'checked',
-                                initialValue: true,
-                            })(
-                                <Checkbox>记住我</Checkbox>
-                            )}
-                            <span className="login-form-forgot" href="" style={{float: 'right'}}>忘记密码</span>
                             <Button type="primary" htmlType="submit" className="login-form-button" style={{width: '100%'}}>
                                 登录
                             </Button>
-                            <p style={{display: 'flex', justifyContent: 'space-between'}}>
-                                <span >或 现在就去注册!</span>
-                                <span onClick={this.gitHub} ><Icon type="github" />(第三方登录)</span>
-                            </p>
                         </FormItem>
                     </Form>
                 </div>

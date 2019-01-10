@@ -27,15 +27,27 @@ export const gitOauthInfo = access_token => get({ url: `${config.GIT_USER}access
 
 // easy-mock数据交互
 // 管理员权限获取
-export const admin = () => get({ url: config.MOCK_AUTH_ADMIN });
+export const admin_src = () => get({ url: config.MOCK_AUTH_ADMIN });
+export const admin = () => post({ 
+    url: config.URL,
+    data:{
+        action: 'login',        
+        username: 'admin',
+        password: '',
+    }
+ });
+
 // 访问权限获取
 export const guest = () => get({ url: config.MOCK_AUTH_VISITOR });
 
 export const post_test = () => post({ 
-    url: `cgi-bin/cgi_vista.cgi`,
+    url: config.URL,
     data: {
-        action: 'test',
+        action: 'get_wan_config',
     } 
+}).then(function (response) {
+    console.log('response',response);
+    return response;
 });
 
 

@@ -8,7 +8,7 @@ import routesConfig from './config';
 import queryString from 'query-string';
 
 export default class CRouter extends Component {
-    requireAuth = (permission, component) => {
+    /*requireAuth = (permission, component) => {
         const { auth } = this.props;
         const { permissions } = auth.data;
         // const { auth } = store.getState().httpData;
@@ -22,7 +22,7 @@ export default class CRouter extends Component {
             return <Redirect to={'/login'} />;
         }
         return permission ? this.requireAuth(permission, component) : component;
-    };
+    };*/
     render() {
         const { onRouterChange } = this.props;
         return (
@@ -50,9 +50,10 @@ export default class CRouter extends Component {
                                             const merge = { ...props, query: queryParams ? queryString.parse(queryParams[0]) : {} };
                                             // 回传route配置
                                             onRouterChange && onRouterChange(r);
-                                            return r.login 
+                                            return <Component {...merge} />
+                                            /*return r.login 
                                                 ? <Component {...merge} />
-                                                : this.requireLogin(<Component {...merge} />, r.auth)
+                                                : this.requireLogin(<Component {...merge} />, r.auth)*/
                                         }}
                                     />
                                 )

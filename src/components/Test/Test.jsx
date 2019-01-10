@@ -11,7 +11,6 @@ class NormalLoginForm extends Component {
             <div>
                 <button onClick={post_test}>get</button>
                 <button>set</button>
-
             </div>
         );
     }
